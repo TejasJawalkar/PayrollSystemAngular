@@ -1,0 +1,66 @@
+<div class="container-sm">
+  <mat-card class="card" appearance="outlined">
+    <mat-card-header><mat-card-title>Login</mat-card-title></mat-card-header>
+    <mat-card-content>
+      <div class="logincontainer">
+        <div class="row">
+          <div class="col-sm-7">
+            <div class="imgcontainer">
+            <img mat-card-image [src]="loginImagePath"/>
+
+            </div>
+          </div>
+          <div class="col-sm-4">
+           <div class="formwrapper">
+            <form [formGroup]="loginFormGroup">
+              <mat-form-field class="matform">
+                <mat-label class="custom-label">UserName</mat-label>
+                <input
+                  matInput
+                  class="textfield1"
+                  name="UserName" formControlName="UserName"
+                  matTooltip="Enter Organisation Email"
+                  matTooltipPosition="above"
+                  placeholder="pat@example.com"
+                />
+                <mat-icon matSuffix></mat-icon>
+                @if(loginFormGroup.controls['UserName'].errors?.["required"])
+                {
+                  <mat-error>Enter UserName</mat-error>
+                }
+                @else if(loginFormGroup.controls['UserName'].errors?.["email"])
+                {
+                  <mat-error>Enter Valid UserName</mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field class="matform">
+                <mat-label class="custom-label">Password</mat-label>
+                <input matInput class="textfield1" [type]="hide() ? 'password' : 'text'" name="Passoword" formControlName="Password" maxlength="8" minlength="6"  matTooltip="Enter Password"
+                matTooltipPosition="above"/>
+                <button
+                  mat-icon-button
+                  matSuffix
+                  class="custom-toggle-password-button"
+                  (click)="clickEvent($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide()"
+                >
+                  <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                @if (loginFormGroup.controls["Password"].errors?.["required"]) {
+                  <mat-error>Enter Password</mat-error>
+                }
+                @else if (loginFormGroup.controls["Password"].errors?.["minlength"]) {
+                  <mat-error>Password Should be 6 Digit long</mat-error>
+                }
+              </mat-form-field>
+              
+              <button mat-flat-button class="custom-button" (click)="LoginClick($event)">Sign In</button>
+            </form>
+           </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
