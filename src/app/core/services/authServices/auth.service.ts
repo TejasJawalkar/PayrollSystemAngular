@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { CommonConstants } from '../../constants/commonConstants';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
+import { promises } from 'dns';
 
 @Injectable({
   providedIn: 'root',
@@ -34,4 +35,24 @@ export class AuthService {
   setToken(token: any): void {
     sessionStorage.setItem('UserToken', token);
   }
+
+  getToken(): string {
+    const token = sessionStorage.getItem('UserToken');
+    if (token != null) {
+      return token.toString();
+    }
+    return '';
+  }
+
+  isLoggedIn(): Boolean {
+    return this.getToken() != null;
+  }
+
+  removeSessions = () => {
+    sessionStorage.removeItem('UserToken');
+    sessionStorage.removeItem('OrgnisationId');
+    sessionStorage.removeItem('EmployeeId');
+    sessionStorage.removeItem('Role');
+    sessionStorage.clear();
+  };
 }

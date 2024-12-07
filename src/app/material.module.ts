@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltip } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     MatCardModule,
     MatGridListModule,
     MatTooltip,
+    MatSidenavModule,
   ],
   exports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     MatCardModule,
     MatGridListModule,
     MatTooltip,
+    MatSidenavModule,
   ],
 })
 export class MaterialModule {}

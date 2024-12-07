@@ -54,8 +54,8 @@
                   <mat-error>Password Should be 6 Digit long</mat-error>
                 }
               </mat-form-field>
-              
-              <button mat-flat-button class="custom-button" (click)="LoginClick($event)">Sign In</button>
+              <app-clickbuttons [ButtonText]="'Login'" (event)="LoginClick($event)" ></app-clickbuttons>
+              <!-- <button mat-flat-button class="custom-button" (click)="LoginClick($event)">Sign In</button> -->
             </form>
            </div>
           </div>
