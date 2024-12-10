@@ -14,11 +14,18 @@ import { ImageConstants } from '../../core/constants/ImageConstatnt';
 import { AuthService } from '../../core/services/authServices/auth.service';
 import { ClickbuttonsComponent } from '../../shared/reusable/clickbuttons/clickbuttons.component';
 import { LogService } from '../../core/services/logServices/log.service';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
+import { LoaderComponent } from '../../shared/reusable/loader/loader.component';
 //#endregion
 
 @Component({
   selector: 'app-userlogin',
-  imports: [MaterialModule, ReactiveFormsModule, ClickbuttonsComponent],
+  imports: [
+    MaterialModule,
+    ReactiveFormsModule,
+    ClickbuttonsComponent,
+    LoaderComponent,
+  ],
   templateUrl: './userlogin.component.html',
   styleUrl: './userlogin.component.scss',
 })
@@ -39,7 +46,8 @@ export class UserloginComponent implements OnInit {
     private authservices: AuthService,
     private logservice: LogService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {
     this.loginImagePath = ImageConstants.LOGIN_PAGE_IMAGE_URL;
   }
@@ -64,9 +72,14 @@ export class UserloginComponent implements OnInit {
   //#region getlogindetails
   getlogindetails() {
     try {
+      this.spinner.show();
       this.IsLogged = this.authservices.isLoggedIn();
       if (this.IsLogged) this.router.navigate(['user']);
       else this.router.navigate(['login']);
+      this.spinner.hide();
+
+      // setTimeout(() => {
+      // }, 5000);
     } catch (error) {}
   }
   //#endregion
@@ -81,12 +94,14 @@ export class UserloginComponent implements OnInit {
 
   //#region LoginClick
   LoginClick = (e: any) => {
+    this.spinner.show();
     try {
       e.preventDefault();
       if (
         this.loginFormGroup.value.UserName == '' ||
         this.loginFormGroup.value.Password == ''
       ) {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: 'UserName and Password in Required..',
@@ -118,6 +133,7 @@ export class UserloginComponent implements OnInit {
               });
               this.logservice.InsertUserLogs(this.loggroup.value).subscribe();
               this.router.navigate(['user']);
+              this.spinner.hide();
               //#endregion
             } else {
               Swal.fire({
@@ -128,6 +144,7 @@ export class UserloginComponent implements OnInit {
                 confirmButtonText: 'Retry',
                 confirmButtonColor: '#7066e0',
               });
+              this.spinner.hide();
             }
           });
       }
@@ -140,6 +157,7 @@ export class UserloginComponent implements OnInit {
         SiteName: new FormControl(this.router.url),
       });
       this.logservice.saveExceptionLog(this.loggroup.value);
+      this.spinner.hide();
     }
   };
   //#endregion

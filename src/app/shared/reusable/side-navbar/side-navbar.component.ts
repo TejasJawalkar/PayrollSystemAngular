@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MaterialModule } from '../../../material.module';
 import { RouterOutlet } from '@angular/router';
 
@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './side-navbar.component.scss',
 })
 export class SideNavbarComponent {
-  showFiller = false;
+  readonly panelOpenState = signal(false);
 }

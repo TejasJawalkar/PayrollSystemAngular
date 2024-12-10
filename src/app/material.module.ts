@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [],
@@ -22,6 +24,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatGridListModule,
     MatTooltip,
     MatSidenavModule,
+    NgxSpinnerModule,
+    MatExpansionModule,
   ],
   exports: [
     CommonModule,
@@ -34,6 +38,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatGridListModule,
     MatTooltip,
     MatSidenavModule,
+    NgxSpinnerModule,
+    MatExpansionModule,
   ],
 })
 export class MaterialModule {}

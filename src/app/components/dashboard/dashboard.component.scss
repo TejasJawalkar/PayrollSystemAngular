@@ -1,13 +1,10 @@
-.wrapper{
-  display: flex;
+/* By default, offcanvas will take full width on small screens */
+.offcanvas-start   {
+  width: 25% !important; /* Set offcanvas width to 50% on small screens */
+}
+@media (max-width: 767px) {
+  .offcanvas-start   {
+    width: 70% !important; /* Set offcanvas width to 50% on small screens */
+  }
 }
 
-.sidebar{
-  width: 15%;
-  background-color: black;
-}
-.content-wrapper{
-  width: 85%;
-  min-height: 690px;
-  background-color: gray;
-}

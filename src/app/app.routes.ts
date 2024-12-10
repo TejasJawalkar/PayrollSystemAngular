@@ -5,17 +5,13 @@ import { inject } from '@angular/core';
 import { userauthGuard } from './core/guards/userauth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  {
-    path: 'login',
-    component: UserloginComponent,
-  },
+  { path: 'login', component: UserloginComponent }, // Normal route
   {
     path: 'user',
     canActivate: [userauthGuard],
-    children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    ],
-  },
+    loadChildren: () =>
+      import('./components/userroute.module').then((m) => m.UserrouteModule),
+  }, // lazy loading
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // redirection route
+  // { path: '**', component: NotFoundComponent }
 ];

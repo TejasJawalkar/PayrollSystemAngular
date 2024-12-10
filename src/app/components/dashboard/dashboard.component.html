@@ -1,8 +1,28 @@
-<div class="wrapper">
-  <div class="sidebar">
-    <app-side-navbar></app-side-navbar>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="btn " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+      <mat-icon aria-setsize="2x">menu</mat-icon>
+    </a>
+    <a class="btn text-danger" (click)="logoutclick()"><mat-icon>power_settings_new</mat-icon></a>
   </div>
-  <div class="content-wrapper" >
-    <router-outlet></router-outlet>
+</nav>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+  <app-side-navbar></app-side-navbar>
   </div>
 </div>
+<div class="">
+  <router-outlet></router-outlet>
+</div>
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple"
+>
+<app-loader></app-loader>
+
+</ngx-spinner>

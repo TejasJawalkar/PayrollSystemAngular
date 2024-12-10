@@ -45,7 +45,8 @@ export class AuthService {
   }
 
   isLoggedIn(): Boolean {
-    return this.getToken() != null;
+    const token = this.getToken();
+    return !!token;
   }
 
   removeSessions = () => {
