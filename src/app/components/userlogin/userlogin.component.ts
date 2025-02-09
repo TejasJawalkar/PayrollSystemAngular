@@ -56,10 +56,10 @@ export class UserloginComponent implements OnInit {
   //#region ngOnInit
   async ngOnInit() {
     this.loginFormGroup = this.fb.group({
-      UserName: new FormControl('', [Validators.required, Validators.email]),
+      UserName: new FormControl('', [Validators.required]),
       Password: new FormControl('', [
         Validators.required,
-        Validators.maxLength(8),
+        Validators.maxLength(12),
       ]),
     });
 
