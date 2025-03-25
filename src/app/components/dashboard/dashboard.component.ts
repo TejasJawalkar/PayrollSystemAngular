@@ -30,11 +30,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private spinner: NgxSpinnerService,
     private authService: AuthService,
     private logServices: LogService,
+
     private router: Router
   ) {
     const e_id = sessionStorage.getItem('EmployeeId');
     this.EmploeeId = e_id ? parseInt(e_id) : 0;
+    
   }
+
+
   ngAfterViewInit(): void {
     this.spinner.hide();
   }
