@@ -32,7 +32,7 @@ export class AppComponent {
       } else {
         if(this.authService.isLoggedIn())
         {
-          this.router.navigate(['user'])
+          this.router.navigate(['dashboard'])
         }
         else
         {

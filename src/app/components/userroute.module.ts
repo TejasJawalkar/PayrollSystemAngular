@@ -6,7 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    children: [{ path: 'dashboard', component: DashboardComponent }],
+    data: { isDashboard: true },
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+    ],
   },
 ];
 

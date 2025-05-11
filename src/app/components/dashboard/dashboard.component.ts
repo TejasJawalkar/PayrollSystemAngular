@@ -7,6 +7,7 @@ import { LoaderComponent } from '../../shared/reusable/loader/loader.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/authServices/auth.service';
 import { LogService } from '../../core/services/logServices/log.service';
+import { HasRouteDataPipe } from '../../shared/pipes/hasroute-data.pipe';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,7 @@ import { LogService } from '../../core/services/logServices/log.service';
     MaterialModule,
     LoaderComponent,
     ReactiveFormsModule,
+    HasRouteDataPipe
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -30,7 +32,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private spinner: NgxSpinnerService,
     private authService: AuthService,
     private logServices: LogService,
-
     private router: Router
   ) {
     const e_id = sessionStorage.getItem('EmployeeId');

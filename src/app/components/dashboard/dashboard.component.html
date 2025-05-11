@@ -1,28 +1,51 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="btn " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-      <mat-icon aria-setsize="2x">menu</mat-icon>
-    </a>
+    <a></a>
     <a class="btn text-danger" (click)="logoutclick()"><mat-icon>power_settings_new</mat-icon></a>
   </div>
 </nav>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<div class="wrapper">
+  <div class="sidebarwrapper">
+    <app-side-navbar></app-side-navbar>
   </div>
-  <div class="offcanvas-body">
-  <app-side-navbar></app-side-navbar>
+  <div class="main-wrapper">
+    <div *ngIf="'isDashboard' | hasRouteData">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              Card 1
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              Card 2
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              Card 3
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              Card 4
+            </div>
+          </div>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
-<div class="">
-  <router-outlet></router-outlet>
-</div>
-<ngx-spinner
-bdColor="rgba(51,51,51,0.8)"
-size="medium"
-color="#fff"
-type="ball-scale-multiple"
->
-<app-loader></app-loader>
-
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <app-loader></app-loader>
 </ngx-spinner>

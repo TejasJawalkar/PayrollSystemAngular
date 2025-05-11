@@ -6,7 +6,7 @@ import { NoInternetPageComponent } from './shared/reusable/nointernet/no-interne
 export const routes: Routes = [
   { path: 'login', component: UserloginComponent },
   {
-    path: 'user',
+    path: 'dashboard',
     canActivate: [userauthGuard],
     loadChildren: () =>
       import('./components/userroute.module').then((m) => m.UserrouteModule),

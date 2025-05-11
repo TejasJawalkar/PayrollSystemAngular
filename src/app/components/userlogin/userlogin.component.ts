@@ -74,7 +74,7 @@ export class UserloginComponent implements OnInit {
     try {
       this.spinner.show();
       this.IsLogged = this.authservices.isLoggedIn();
-      if (this.IsLogged) this.router.navigate(['user']);
+      if (this.IsLogged) this.router.navigate(['dashboard']);
       else this.router.navigate(['login']);
       this.spinner.hide();
 
@@ -132,7 +132,7 @@ export class UserloginComponent implements OnInit {
                 Flag: new FormControl(1),
               });
               this.logservice.InsertUserLogs(this.loggroup.value).subscribe();
-              this.router.navigate(['user']);
+              this.router.navigate(['dashboard']);
               this.spinner.hide();
               //#endregion
             } else {
