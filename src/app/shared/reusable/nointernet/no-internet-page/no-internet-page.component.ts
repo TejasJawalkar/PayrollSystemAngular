@@ -7,7 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   imports: [
     LoaderComponent
   ],
-  templateUrl: './no-internet-page.component.html',
+  templateUrl: '.. /no-internet-page.component.html',
   styleUrl: './no-internet-page.component.scss'
 })
 export class NoInternetPageComponent {
